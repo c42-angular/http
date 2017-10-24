@@ -56,8 +56,8 @@ export class AppComponent {
 
   onGet() {
     this.serversService.getServers().subscribe(
-      (response: Response) => {
-        console.log(response.json());
+      (servers: any[]) => {
+        console.log(servers);
       },
       (error: Error) => console.log(error)
     );

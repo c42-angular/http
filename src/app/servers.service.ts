@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class ServersService {
@@ -18,6 +19,9 @@ export class ServersService {
   }
 
   getServers() {
-    return this.http.get('https://ng-http-request.firebaseio.com/data.json');
+    return this.http.get('https://ng-http-request.firebaseio.com/data.json')
+      .map((response: Response) => {
+        return response.json();
+      })
   }
 }

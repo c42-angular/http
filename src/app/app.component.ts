@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ServersService } from 'app/servers.service';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -32,13 +33,22 @@ export class AppComponent {
   }
 
   onSave() {
-    this.serversService.saveServers(this.servers).subscribe(
+    this.serversService.storeServers(this.servers).subscribe(
       (response) => {
         console.log(response);
       },
       (error) => {
         console.log(error);
       }
+    );
+  }
+
+  onGet() {
+    this.serversService.getServers().subscribe(
+      (response: Response) => {
+        console.log(response.json());
+      },
+      (error: Error) => console.log(error)
     );
   }
   private generateId() {

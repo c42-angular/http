@@ -7,9 +7,14 @@ export class ServersService {
   constructor(private http: Http){
   }
 
-  storeServers(servers: any[]) {
+  appendServers(servers: any[]) {
     const hdrs = new Headers({'Content-Type': 'application/json'});
     return this.http.post('https://ng-http-request.firebaseio.com/data.json', servers, {headers: hdrs});
+  }
+
+  updateServers(servers: any[]) {
+    const hdrs = new Headers({'Content-Type': 'application/json'});
+    return this.http.put('https://ng-http-request.firebaseio.com/data.json', servers, {headers: hdrs});
   }
 
   getServers() {

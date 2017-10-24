@@ -32,8 +32,19 @@ export class AppComponent {
     });
   }
 
-  onSave() {
-    this.serversService.storeServers(this.servers).subscribe(
+  onAppend() {
+    this.serversService.appendServers(this.servers).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  onUpdate() {
+    this.serversService.updateServers(this.servers).subscribe(
       (response) => {
         console.log(response);
       },

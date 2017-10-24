@@ -21,7 +21,12 @@ export class ServersService {
   getServers() {
     return this.http.get('https://ng-http-request.firebaseio.com/data.json')
       .map((response: Response) => {
-        return response.json();
+        const data = response.json();
+        console.log(data);
+        for (const d of data) {
+          d['name'] = 'PRE_' + d['name'];
+        }
+        return data;
       })
   }
 }
